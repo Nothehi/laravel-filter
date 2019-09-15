@@ -1,18 +1,23 @@
 {
     "name": "hchamran/laravel-filter",
     "type": "library",
-    "description": "A modern and advance filter for laravel",
-    "keywords": [
-        "laravel",
-        "filter"
-    ],
+    "description": "A package to help you do easily filter for search",
+    "keywords": ["laravel", "filter"],
     "license": "MIT",
+    "homepage": "https://github.com/hChamran/laravel-filter",
     "authors": [
         {
-            "name": "hChamran",
+            "name": "Hossein Rabbani",
             "email": "nodehi7813@gmail.com"
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "HChamran\\LaravelFilter\\": "src/"
+        },
+        "files": [
+            "src/Helpers/helpers.php"
+        ]
+    }
 }

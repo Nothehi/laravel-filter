@@ -1,2 +1,2 @@
 # laravel-filter
-A modern and advance filter for laravel
+A package to help you do easily filter for search

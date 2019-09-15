@@ -1,0 +1,18 @@
+{
+    "name": "hchamran/laravel-filter",
+    "type": "library",
+    "description": "A modern and advance filter for laravel",
+    "keywords": [
+        "laravel",
+        "filter"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hChamran",
+            "email": "nodehi7813@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

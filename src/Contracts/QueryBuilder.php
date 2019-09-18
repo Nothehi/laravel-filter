@@ -52,4 +52,14 @@ abstract class QueryBuilder implements FilterInterface
         return $options;
     }
 
+    /**
+     * Return if field exist in fields property
+     *
+     * @param $filed
+     * @return bool
+     */
+    private function fieldExist($filed)
+    {
+        return in_array($filed, $this->fields);
+    }
 }

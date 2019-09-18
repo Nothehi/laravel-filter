@@ -1,6 +1,6 @@
-#Easily filter and search
+# Easily filter and search
 
-###Installation
+### Installation
 `
 composer require hchamran/laravel-filter
 `

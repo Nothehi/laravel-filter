@@ -1,2 +1,6 @@
-# laravel-filter
-A package to help you do easily filter for search
+#Easily filter and search
+
+###Installation
+`
+composer require hchamran/laravel-filter
+`

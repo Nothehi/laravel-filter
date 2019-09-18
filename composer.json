@@ -11,7 +11,7 @@
             "email": "nodehi7813@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "alpha",
     "autoload": {
         "psr-4": {
             "HChamran\\LaravelFilter\\": "src/"

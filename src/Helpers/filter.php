@@ -2,16 +2,17 @@
 
 if (! function_exists('filter')) {
     /**
-     * Get the available container instance.
+     * Get the available filter instance.
      *
      * @param null $class
      * @return mixed
      */
     function filter($class = null)
     {
-        $filter_class = 'App\Filters\\' . $class;
-        if (class_exists($filter_class)) {
-            return new $filter_class();
+        $filters = config('filter.filters');
+
+        if (class_exists($filters[$class])) {
+            return new $filters[$class];
         }
     }
 }

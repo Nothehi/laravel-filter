@@ -1,0 +1,15 @@
+<?php
+
+namespace DummyNamespace;
+
+use HChamran\LaravelFilter\Contracts\QueryFilter;
+
+class DummyFilter extends QueryFilter
+{
+    public function fields()
+    {
+        return [
+            //
+        ];
+    }
+}

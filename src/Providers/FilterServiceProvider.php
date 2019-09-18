@@ -6,6 +6,10 @@ use Illuminate\Support\ServiceProvider;
 
 class FilterServiceProvider extends ServiceProvider
 {
+    protected $commands = [
+      'HChamran\LaravelFilter\Commands\FilterMakeCommand'
+    ];
+
     /**
      * Register services.
      *
@@ -13,6 +17,7 @@ class FilterServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->commands($this->commands);
         $this->mergeConfigFrom(__DIR__ . '/../Config/filter.php', 'filter');
     }
 

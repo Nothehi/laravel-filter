@@ -13,7 +13,7 @@ class FilterServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../Config/filter.php', 'filter');
+        $this->mergeConfigFrom(__DIR__ . '/../Config/filter.php', 'filter');
     }
 
     /**
@@ -23,6 +23,8 @@ class FilterServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/../Config/filter.php' => config_path('filter.php'),
+        ]);
     }
 }

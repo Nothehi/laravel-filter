@@ -4,6 +4,9 @@ namespace HChamran\LaravelFilter\Traits;
 
 use HChamran\LaravelFilter\Contracts\QueryFilter;
 
+/**
+ * @method static filter(string $string)
+ */
 trait Filterable
 {
     /**

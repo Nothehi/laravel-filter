@@ -4,7 +4,7 @@ namespace HChamran\LaravelFilter\Contracts;
 
 use Illuminate\Http\Request;
 
-abstract class QueryBuilder implements FilterInterface
+abstract class QueryFilter implements FilterInterface
 {
     protected $request;
 
@@ -23,13 +23,11 @@ abstract class QueryBuilder implements FilterInterface
         $this->request = Request::capture();
 
         $this->requestParser($this->getRequests());
-
-        $this->builder();
     }
 
-    protected function builder()
+    public function builder($query)
     {
-        dd();
+        dd($query);
     }
 
     /**

@@ -30,7 +30,15 @@ abstract class QueryFilter implements FilterInterface
 
     public function builder(Builder $query)
     {
-        dd($this->filters, $this->sort);
+        foreach ($this->filters as $filter) {
+            if (is_array($filter[1])) {
+                $query = $query->whereBetween($filter[0], $filter[1]);
+            } else {
+                $query = $query->where($filter[0], 'like', "%{$filter[1]}%");
+            }
+        }
+
+        return $query;
     }
 
     /**
@@ -54,7 +62,10 @@ abstract class QueryFilter implements FilterInterface
         if (empty($request))
             return;
 
-        list($filterString, $this->sort) = explode(',', array_keys($request)[0]);
+        if (strpos('asd', array_keys($request)[0]) || strpos('desc', array_keys($request)[0]))
+            list($filterString, $this->sort) = explode(',', array_keys($request)[0]);
+        else
+            $filterString = array_keys($request)[0];
 
         $conditions = explode('|', $filterString);
 

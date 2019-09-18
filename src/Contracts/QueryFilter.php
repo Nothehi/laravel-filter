@@ -2,6 +2,7 @@
 
 namespace HChamran\LaravelFilter\Contracts;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 abstract class QueryFilter implements FilterInterface
@@ -16,6 +17,8 @@ abstract class QueryFilter implements FilterInterface
 
     protected $builder;
 
+    protected $chars = ['-'];
+
     public function __construct()
     {
         $this->fields = $this->fields();
@@ -25,9 +28,9 @@ abstract class QueryFilter implements FilterInterface
         $this->requestParser($this->getRequests());
     }
 
-    public function builder($query)
+    public function builder(Builder $query)
     {
-        dd($query);
+        dd($this->filters, $this->sort);
     }
 
     /**
@@ -68,8 +71,13 @@ abstract class QueryFilter implements FilterInterface
      */
     private function getFilters($conditions)
     {
+        $current = 0;
         foreach ($conditions as $filter) {
             $this->filters[] = explode(':', $filter);
+
+            if ($this->charExist($this->filters[$current][1], '-')) {
+                $this->filters[$current] = explode('-', $this->filters[$current][1]);
+            }
         }
 
         return $this->filters;
@@ -105,5 +113,23 @@ abstract class QueryFilter implements FilterInterface
     private function fieldExist($filed)
     {
         return in_array($filed, $this->fields);
+    }
+
+    /**
+     * Check if needle in field exist
+     *
+     * @param $field
+     * @param $needle
+     * @return bool
+     */
+    public function charExist($field, $needle)
+    {
+        foreach ($this->chars as $char) {
+            if ($needle == $char && strpos($field, $char)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

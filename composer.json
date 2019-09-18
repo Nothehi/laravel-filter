@@ -17,7 +17,7 @@
             "HChamran\\LaravelFilter\\": "src/"
         },
         "files": [
-            "src/Helpers/helpers.php"
+          "src/Helpers/filter.php"
         ]
     }
 }

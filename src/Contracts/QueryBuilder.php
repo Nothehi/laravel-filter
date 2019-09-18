@@ -15,6 +15,7 @@ abstract class QueryBuilder implements FilterInterface
     protected $sort;
 
 
+    protected $fields;
 
     public function __construct()
     {

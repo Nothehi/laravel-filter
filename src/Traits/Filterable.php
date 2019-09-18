@@ -11,8 +11,11 @@ trait Filterable
      * @param QueryFilter $filter
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeFilter($query, QueryFilter $filter)
+    public function scopeFilter($query, $filter)
     {
-        return $filter->dispatch($query);
+        if (is_string($filter))
+            return filter($filter)->builder($query);
+        elseif ($filter instanceof QueryFilter)
+            return $filter->builder($query);
     }
 }

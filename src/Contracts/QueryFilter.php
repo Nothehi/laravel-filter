@@ -71,13 +71,8 @@ abstract class QueryFilter implements FilterInterface
      */
     private function getFilters($conditions)
     {
-        $current = 0;
         foreach ($conditions as $filter) {
             $this->filters[] = explode(':', $filter);
-
-            if ($this->charExist($this->filters[$current][1], '-')) {
-                $this->filters[$current] = explode('-', $this->filters[$current][1]);
-            }
         }
 
         return $this->filters;
@@ -86,22 +81,25 @@ abstract class QueryFilter implements FilterInterface
     /**
      * This function returned just values which exists in fields property
      *
-     * @param $values
+     * @param $filters
      * @return void
      */
-    public function setFieldsExists($values)
+    public function setFieldsExists($filters)
     {
         $current = 0;
-        foreach ($values as $value) {
-            if($this->fieldExist($value[0]))
+        foreach ($filters as $filter) {
+            if ($this->fieldExist($filter[0])) {
+                if ($this->charExist($filter[1], '-')) {
+                    $filters[$current][1] = explode('-', $filter[1]);
+                }
                 $current++;
+            }
             else {
-                unset($values[$current]);
+                unset($filters[$current]);
                 $current++;
             }
         }
-
-        $this->filters = $values;
+        $this->filters = $filters;
     }
 
     /**
@@ -122,7 +120,7 @@ abstract class QueryFilter implements FilterInterface
      * @param $needle
      * @return bool
      */
-    public function charExist($field, $needle)
+    private function charExist($field, $needle)
     {
         foreach ($this->chars as $char) {
             if ($needle == $char && strpos($field, $char)) {

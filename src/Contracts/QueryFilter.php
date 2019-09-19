@@ -28,8 +28,14 @@ abstract class QueryFilter implements FilterInterface
         $this->requestParser($this->getRequests());
     }
 
+    /**
+     * @param Builder $query
+     * @return Builder
+     */
     public function builder(Builder $query)
     {
+        if (is_null($this->filters))
+            return $query;
         foreach ($this->filters as $filter) {
             if (is_array($filter[1])) {
                 $query = $query->whereBetween($filter[0], $filter[1]);

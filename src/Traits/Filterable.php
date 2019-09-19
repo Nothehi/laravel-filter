@@ -17,7 +17,7 @@ trait Filterable
     public function scopeFilter($query, $filter)
     {
         if (is_string($filter))
-            return filter($filter)->builder($query);
+            return getInstanceFilter($filter)->builder($query);
         elseif ($filter instanceof QueryFilter)
             return $filter->builder($query);
     }

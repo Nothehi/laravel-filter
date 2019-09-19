@@ -7,7 +7,7 @@ if (! function_exists('filter')) {
      * @param null $class
      * @return mixed
      */
-    function filter($class = null)
+    function getInstanceFilter($class = null)
     {
         $filters = config('filter.filters');
 

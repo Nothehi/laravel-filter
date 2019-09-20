@@ -1,7 +1,10 @@
 # Easily filter and search
+[![Scrutinizer code quality (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/quality/g/hchamran/laravel-filter?style=flat-square)](https://scrutinizer-ci.com/g/hChamran/laravel-filter)
+[![Scrutinizer build (GitHub/Bitbucket)](https://img.shields.io/scrutinizer/build/g/hchamran/laravel-filter?color=green&style=flat-square)](https://scrutinizer-ci.com/g/hChamran/laravel-filter)
+[![Packagist Version](https://img.shields.io/packagist/v/hchamran/laravel-filter?color=yellowgreen&style=flat-square)](https://packagist.org/packages/hchamran/laravel-filter)
 
-### Installation
-```php
+## Installation
+```
 composer require hchamran/laravel-filter
 ```
 

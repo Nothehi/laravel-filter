@@ -1,7 +1,7 @@
 # Easily filter and search
 
 ### Installation
-```php
+```
 composer require hchamran/laravel-filter
 ```
 

@@ -9,20 +9,25 @@
 composer require hchamran/laravel-filter
 ```
 
-Next, you must add provider to `config/app.php` :
-
+(For Laravel <=5.4) Next, you must add the service provider to config/app.php `config/app.php` :
 ```php
-HChamran\LaravelFilter\Providers\FilterServiceProvider::class,
+'providers' => [
+    // for laravel 5.4 and below
+    HChamran\LaravelFilter\Providers\FilterServiceProvider::class,
+]
+```
+
+Publish your config file
+```
+php artisan vendor:publish
 ```
 
 And for make filter first use filterable in your model:
-
 ```php
 use Filterable;
 ```
 
 Seccond make filter class with this command Example: 
-
 ```
 php artisan make:filter UserFilter
 ```

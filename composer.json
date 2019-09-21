@@ -19,5 +19,12 @@
         "files": [
           "src/Helpers/filter.php"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HChamran\\LaravelFilter\\Providers\\FilterServiceProvider"
+            ]
+        }
     }
 }

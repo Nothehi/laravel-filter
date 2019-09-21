@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('filter')) {
+if (! function_exists('getInstanceFilter')) {
     /**
      * Get the available filter instance.
      *

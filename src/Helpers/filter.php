@@ -16,3 +16,17 @@ if (! function_exists('getInstanceFilter')) {
         }
     }
 }
+
+if (! function_exists('filter')) {
+    /**
+     * Make the filter querty string.
+     *
+     * @param $field
+     * @param $value
+     * @return String
+     */
+    function filter($field, $value)
+    {
+        return "?{$field}:{$value}";
+    }
+}

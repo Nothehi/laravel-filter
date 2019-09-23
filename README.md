@@ -10,10 +10,10 @@
 [![GitHub](https://img.shields.io/github/license/hchamran/laravel-filter?color=yellow&style=flat-square)](https://github.com/hChamran/laravel-filter/blob/master/LICENSE)
 
 ## Topics
- - [Introduction](https://github.com/hChamran/laravel-filter#introduction)
- - [Concept](https://github.com/hChamran/laravel-filter#concept)
- - [Installation](https://github.com/hChamran/laravel-filter#installation)
- - [Usage](https://github.com/hChamran/laravel-filter#usage)
+ - [Introduction](#introduction)
+ - [Concept](#concept)
+ - [Installation](#installation)
+ - [Usage](#usage)
 
 ## Introduction
 Always in laravel, the filter of database fields and search inside that, it's repetitive work, but you can with use this package create filters very easy.

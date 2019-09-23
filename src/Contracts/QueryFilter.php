@@ -131,7 +131,7 @@ abstract class QueryFilter implements FilterInterface
     }
 
     /**
-     * Check if needle in field exist
+     * Check if needle|character in field exist
      *
      * @param $field
      * @param $needle

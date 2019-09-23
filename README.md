@@ -23,11 +23,11 @@ This work with GET method and query string. When this receives query string, par
 
 Symbol | Do | Usage | Example
 :---|:---|:---|:---|
-: | separating field from value | Field:value | title:phone
-- | separating range of values | value1-value2 | price:0-100
-, | separating fields fo filter from sort method | Field:value,sort | title:phone,asc
+\: | separating field from value | Field:value | title:phone 
+\- | separating range of values | value1-value2 | price:0-100
+\, | separating fields fo filter from sort method | Field:value,sort | title:phone,asc
 By | separating field of sorting from sort method | Field:value,sortByField | title:phone,ascByprice
-
+  
 ## Installation  
 ```  
 composer require hchamran/laravel-filter  

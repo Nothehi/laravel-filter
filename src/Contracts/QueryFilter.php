@@ -13,6 +13,8 @@ abstract class QueryFilter implements FilterInterface
 
     protected $sort;
 
+    protected $filterString;
+
     protected $filters;
 
     protected $builder;
@@ -70,6 +72,7 @@ abstract class QueryFilter implements FilterInterface
 
         if (strpos('asd', array_keys($request)[0]) || strpos('desc', array_keys($request)[0]))
             list($filterString, $this->sort) = explode(',', array_keys($request)[0]);
+        $filters = $this->getFilters();
         else
             $filterString = array_keys($request)[0];
 
@@ -86,8 +89,10 @@ abstract class QueryFilter implements FilterInterface
      * @param $conditions
      * @return mixed
      */
-    private function getFilters($conditions)
+    private function getFilters()
     {
+        $conditions = explode('|', $this->filterString);
+
         foreach ($conditions as $filter) {
             $this->filters[] = explode(':', $filter);
         }

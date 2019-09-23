@@ -46,6 +46,8 @@ abstract class QueryFilter implements FilterInterface
             }
         }
 
+        $this->setSortFilter($query);
+
         return $query;
     }
 
@@ -70,17 +72,56 @@ abstract class QueryFilter implements FilterInterface
         if (empty($request))
             return;
 
-        if (strpos('asd', array_keys($request)[0]) || strpos('desc', array_keys($request)[0]))
-            list($filterString, $this->sort) = explode(',', array_keys($request)[0]);
+        $this->chackSortFilter($request);
+
         $filters = $this->getFilters();
-        else
-            $filterString = array_keys($request)[0];
-
-        $conditions = explode('|', $filterString);
-
-        $filters = $this->getFilters($conditions);
 
         $this->setFieldsExists($filters);
+    }
+
+    /**
+     * Check if sort query string exist get it attributes
+     *
+     * @param $request
+     */
+    private function chackSortFilter($request)
+    {
+        if (strpos(array_keys($request)[0], 'asc') || strpos(array_keys($request)[0], 'desc')) {
+            list($this->filterString, $this->sort) = explode(',', array_keys($request)[0]);
+            if (strpos($this->sort, 'By'))
+                $this->sort = explode('By', $this->sort);
+            else {
+                $this->sort = str_split($this->sort, 4);
+                $this->sort[] = $this->getStringFilters();
+            }
+        }
+
+        else
+            $this->filterString = array_keys($request)[0];
+    }
+
+    /**
+     * Set sort of result
+     *
+     * @param $query
+     * @return Builder
+     */
+    private function setSortFilter($query)
+    {
+        if (is_null($this->sort))
+            return $query;
+        else
+            return $query->orderBy($this->sort[1], $this->sort[0]);
+    }
+
+    /**
+     * Get feild of query string
+     *
+     * @return mixed
+     */
+    private function getStringFilters()
+    {
+        return explode(':', explode(',', array_keys($this->getRequests())[0])[0])[0];
     }
 
     /**
